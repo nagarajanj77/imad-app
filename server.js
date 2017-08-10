@@ -6,22 +6,34 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne = {
-  title : 'Article One | Nagarajan J',
-  heading : 'Artcle ONE',
-  date : 'Aug 7, 2017',
-  content :`                
-            <p>
-                This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017.
-            </p>
-            <p>
-                This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017.
-            </p>
-            <p>
-                This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017.
-            </p>
-            `
-};
+var articles = {
+      'article-one' : {
+                      title : 'Article One | Nagarajan J',
+                      heading : 'Artcle ONE',
+                      date : 'Aug 7, 2017',
+                      content :`                
+                                <p>
+                                    This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017.
+                                </p>
+                                <p>
+                                    This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017.
+                                </p>
+                                <p>
+                                    This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017. This a created for Article One on 7th Aug 2017. This a created for ARTICLE ONE on 7th Aug 2017.
+                                </p>
+                                `
+                    },
+      'article-two' : {
+                      title : 'Article Two | Nagarajan J',
+                      heading : 'Artcle TWO',
+                      date : 'Aug 7, 2017',
+                      content :`                
+                                <p>
+                                    This a created for Article Two on 10th Aug 2017. This a created for ARTICLE TWO on 10th Aug 2017. This a created for Article TWO on 10th Aug 2017.
+                                </p>
+                                `
+                    }
+                };
 
 
 function createTemplate (data) {
@@ -69,14 +81,23 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
-    res.send(createTemplate(articleOne));
+
+app.get('/:articleName', function (req, res) {
+//   articleName = article-one
+//   articles(articleName) = {} content object for article one
+    var articleName = req.param.articleName;
+    res.send(createTemplate(articles(articleName)));
 });
 
-app.get('/article-two', function (req, res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
+
+//app.get('/article-one', function (req, res) {
+////   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+//    res.send(createTemplate(articleOne));
+//});
+
+//app.get('/article-two', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+//});
 
 app.get('/article-three', function (req, res) {
 //   res.send('Article Three is requested here');
