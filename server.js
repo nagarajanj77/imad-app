@@ -32,7 +32,17 @@ var articles = {
                                     This a created for Article Two on 10th Aug 2017. This a created for ARTICLE TWO on 10th Aug 2017. This a created for Article TWO on 10th Aug 2017.
                                 </p>
                                 `
-                    }
+                    },
+      'article-three' : {
+                      title : 'Article Three | Nagarajan J',
+                      heading : 'Article THREE',
+                      date : 'Aug 11, 2017',
+                      content :`                
+                                <p>
+                                    This a created for Article Three on 10th Aug 2017. This a created for ARTICLE THREE on 10th Aug 2017. This a created for Article THREE on 10th Aug 2017.
+                                </p>
+                                `
+                    }                    
                 };
 
 
@@ -99,10 +109,10 @@ app.get('/:articleName', function (req, res) {
 //   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
 //});
 
-app.get('/article-three', function (req, res) {
+//app.get('/article-three', function (req, res) {
 //   res.send('Article Three is requested here');
-   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
+//   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+//});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
