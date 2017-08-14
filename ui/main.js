@@ -25,7 +25,7 @@
 
 
 // Counter code
-var button = document.getElementByID("counter");
+var button = document.getElementByID('counter');
 var counter = 0;
 
 button.onclick = function () {
@@ -36,7 +36,7 @@ button.onclick = function () {
     
     // render the variable in correct span
     counter = counter + 1;
-    var span = document.getElementById("count");
+    var span = document.getElementById('count');
     span.innerHTML = counter.toString();
     
 };
