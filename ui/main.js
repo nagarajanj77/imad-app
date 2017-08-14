@@ -3,9 +3,9 @@ console.log('Loaded!');
 
 //change text
 
-var element = document.getElementById("main-text");
+//var element = document.getElementById("main-text");
 
-element.innerHTML = "New value : Hai, Nagarajan J";
+//element.innerHTML = "New value : Hai, Nagarajan J";
 
 
 //move the image
