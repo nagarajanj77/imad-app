@@ -100,6 +100,19 @@ app.get('/counter', function(req, res) {
 
 
 
+var names = [];
+app.get('/submit-name', function(req, res) {
+    //get name from request
+    var name = req.query.name;
+    
+    names.push(name);
+    // json Java Script Object Notation
+    res.send(JSON.stringify(names));
+});
+
+
+
+
 app.get('/:articleName', function (req, res) {
 //   articleName = article-one
 //   articles(articleName) = {} content object for article one
@@ -136,16 +149,6 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-
-var names = [];
-app.get('/submit-name', function(req, res) {
-    //get name from request
-    var name = req.query.name;
-    
-    names.push(name);
-    // json Java Script Object Notation
-    res.send(JSON.stringify(names));
-});
 
 
 
