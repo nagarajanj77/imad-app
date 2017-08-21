@@ -143,7 +143,7 @@ app.get('/submit-name', function(req, res) {
 //    res.send(createTemplate(articles[articleName]));
 //});
 
-app.get('/artciles/:articleName', function (req, res) {
+app.get('/articles/:articleName', function (req, res) {
 //   articleName = article-one
 //   articles(articleName) = {} content object for article one
     pool.query("Select * from article where title = " + req.params.artcileName, function (err, result) {
