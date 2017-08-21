@@ -15,6 +15,21 @@ var app = express();
 app.use(morgan('combined'));
 
 
+var pool = new Pool(config);
+app.get('test-db', function(req, res) {
+    // make a selection
+    pool.query('SELECT * from article', function(err, result) {
+    if (err) {
+      res.status(500).send(err.toString());  
+    } else {
+        res.send(JSON.stringify(result));
+    }   
+    } );
+    // return a response
+});
+
+
+
 var articles = {
       'article-one' : {
                       title : 'Article One | Nagarajan J',
@@ -101,18 +116,7 @@ app.get('/', function (req, res) {
 });
 
 
-var pool = new Pool(config);
-app.get('test-db', function(req, res) {
-    // make a selection
-    pool.query('SELECT * from article', function(err, result) {
-    if (err) {
-      res.status(500).send(err.toString());  
-    } else {
-        res.send(JSON.stringify(result));
-    }   
-    } );
-    // return a response
-});
+
 
 
 var counter = 0;
